@@ -1,3 +1,24 @@
+> [!IMPORTANT]
+> **非官方 Fork / Unofficial fork**
+>
+> 本仓库是 [VincentKingHsu/vRemoter](https://github.com/VincentKingHsu/vRemoter) 的社区分支，在原版（MIT 许可证）基础上做了以下改动，**与原作者无关，未经官方认证**：
+>
+> | 改动 | 说明 |
+> |---|---|
+> | macOS 13 / 14.1 兼容模式 | 修复老系统上「录音 1 秒被掐断」。根因：`kAudioProcessPropertyIsRunningInput` 需要 macOS 14.2+，老系统上自动进入按键事件驱动的兼容模式 |
+> | 微信输入法支持 | 语音联动宿主不再硬编码豆包，可选豆包 / 微信输入法 / 自动检测 |
+> | Intel (x86_64) 构建 | 官方发行包仅含 arm64，本 fork 提供重新编译的 Intel 版本 |
+>
+> **下载**：见右侧 [Releases](../../releases)。DMG 为 ad-hoc 签名（未公证），首次打开如被 Gatekeeper 拦截，执行：
+> ```bash
+> xattr -dr com.apple.quarantine /Applications/vRemote.app
+> ```
+> **注意**：本 fork 的构建默认关闭官方自动更新通道（官方更新只发 arm64 包，直接更新会覆盖成无法运行的版本）。请从本 Releases 页面手动获取新版本。
+>
+> 原项目文档见下方。
+
+---
+
 # vRemoter
 
 > 本仓库保存 vRemoter 的源码、设计源稿、构建脚本与测试。普通用户请通过 `vincentstudio.org` 系列域名访问官网、下载与更新服务。
