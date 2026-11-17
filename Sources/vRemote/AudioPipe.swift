@@ -231,7 +231,11 @@ final class AudioPipe: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
             $0.uniqueID == "BuiltInMicrophoneDevice"
         } ?? discovery.devices.first {
             $0.localizedName.localizedCaseInsensitiveContains("MacBook")
-        }
+        // Older Intel Macs expose the built-in microphone as
+        // "AppleHDAEngineInput:…" with a localized name like "内建麦克风",
+        // so neither filter above matches. The session only ever contains
+        // builtInMicrophone devices, so falling back to the first one is safe.
+        } ?? discovery.devices.first
         guard let device else {
             print("[AUDIO] ⚠️ 找不到 MacBook 内置麦克风")
             return
